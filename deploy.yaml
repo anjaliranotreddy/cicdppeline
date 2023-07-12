@@ -1,19 +1,21 @@
 apiVersion: apps/v1
-kind: Deployment # Kubernetes resource kind we are creating
+kind: Deployment
 metadata:
-  name: k8s-deployment
+  name: nginx-deployment
+  labels:
+    app: nginx
 spec:
+  replicas: 2
   selector:
     matchLabels:
-      app: k8s
-  replicas: 2 # Number of replicas that will be created for this deployment
+      app: nginx
   template:
     metadata:
       labels:
-        app: k8s
+        app: nginx
     spec:
       containers:
-        - name: k8s
-          image: anjaliranotreddy/pipeline  # Image that will be used to containers in the cluster
-          ports:
-            - containerPort: 8080
+      - name: nginx
+        image: anjaliranotreddy/pipeline
+        ports:
+        - containerPort: 80
