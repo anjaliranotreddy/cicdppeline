@@ -5,8 +5,9 @@ metadata:
   labels:
     app: frontend
 spec:
-  strategy: RollingUpdate
-  replicas: 3
+  strategy: 
+    type: RollingUpdate
+    replicas: 3
   selector:
     matchLabels:
       app: frontend
